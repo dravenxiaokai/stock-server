@@ -3,7 +3,7 @@
   "apps" : [{
     "name"      : "stock",
     // "script"    : "app.js",
-    "script"    : "./build/app.js",
+    "script"    : "./build/stock_server.js",
     "env": {
       "COMMON_VARIABLE": "true"
     },
