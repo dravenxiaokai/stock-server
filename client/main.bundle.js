@@ -829,19 +829,21 @@ var StockFormComponent = (function () {
                 new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* FormControl */](false)
             ], this.categoriesSelectValidator)
         });
-        this.stockService.getStock(stockId).subscribe(function (data) {
-            _this.stock = data;
-            _this.formModel.reset({
-                name: data.name,
-                price: data.price,
-                desc: data.desc,
-                categories: [
-                    data.categories.indexOf(_this.categories[0]) != -1,
-                    data.categories.indexOf(_this.categories[1]) != -1,
-                    data.categories.indexOf(_this.categories[2]) != -1
-                ]
+        if (stockId != 0) {
+            this.stockService.getStock(stockId).subscribe(function (data) {
+                _this.stock = data;
+                _this.formModel.reset({
+                    name: data.name,
+                    price: data.price,
+                    desc: data.desc,
+                    categories: [
+                        data.categories.indexOf(_this.categories[0]) != -1,
+                        data.categories.indexOf(_this.categories[1]) != -1,
+                        data.categories.indexOf(_this.categories[2]) != -1
+                    ]
+                });
             });
-        });
+        }
     };
     StockFormComponent.prototype.categoriesSelectValidator = function (control) {
         var valid = false;
