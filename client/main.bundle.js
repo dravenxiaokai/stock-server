@@ -179,7 +179,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/content/content.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content-wrapper\">\n  <!-- Content Header (Page header) -->\n  <section class=\"content-header\">\n    <h1>\n      {{pageTitle}}\n      <small>{{pageDesc}}</small>\n    </h1>\n    <ol class=\"breadcrumb\">\n      <li><a href=\"#\"><i class=\"fa fa-dashboard\"></i> Level</a></li>\n      <li class=\"active\">Here</li>\n    </ol>\n  </section>\n\n  <!-- Main content -->\n  <section class=\"content\">\n\n    <!-- Your Page Content Here -->\n    <!-- <app-stock-manage></app-stock-manage> -->\n    <router-outlet></router-outlet>\n\n  </section>\n  <!-- /.content -->\n</div>"
+module.exports = "<div class=\"content-wrapper\">\n  <!-- Content Header (Page header) -->\n  <section class=\"content-header\">\n    <h1>\n      {{pageTitle}}\n      <small>{{pageDesc}}</small>\n    </h1>\n    <ol class=\"breadcrumb\">\n      <li><a href=\"#\"><i class=\"fa fa-dashboard\"></i> 首页</a></li>\n      <li class=\"active\">Here</li>\n    </ol>\n  </section>\n\n  <!-- Main content -->\n  <section class=\"content\">\n\n    <!-- Your Page Content Here -->\n    <!-- <app-stock-manage></app-stock-manage> -->\n    <router-outlet></router-outlet>\n\n  </section>\n  <!-- /.content -->\n</div>"
 
 /***/ }),
 
@@ -262,7 +262,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  欢迎来到股票管理平台\n</p>\n"
+module.exports = "<div class=\"alert alert-info alert-dismissible\">\n  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>\n  <h4><i class=\"icon fa fa-info\"></i> 欢迎光临</h4>\n  Angular开发股票信息管理平台\n</div>\n<ul class=\"timeline\">\n\n  <!-- timeline time label -->\n  <li class=\"time-label\">\n    <span class=\"bg-red\">\n            8 Aug. 2017\n        </span>\n  </li>\n  <!-- /.timeline-label -->\n\n  <!-- timeline item -->\n  <li>\n    <!-- timeline icon -->\n    <i class=\"fa fa-envelope bg-blue\"></i>\n    <div class=\"timeline-item\">\n      <span class=\"time\"><i class=\"fa fa-clock-o\"></i> 12:05</span>\n\n      <h3 class=\"timeline-header\"><a href=\"https://github.com/dravenxiaokai\">draven_xiaokai</a> 教你如何使用本系统</h3>\n\n      <div class=\"timeline-body\">\n        根据左侧菜单选择相应功能\n      </div>\n\n      <div class=\"timeline-footer\">\n        <a class=\"btn btn-primary btn-xs\">详情</a>\n      </div>\n    </div>\n  </li>\n  <li>\n    <!-- timeline icon -->\n    <i class=\"fa fa-comments bg-yellow\"></i>\n    <div class=\"timeline-item\">\n      <span class=\"time\"><i class=\"fa fa-clock-o\"></i> 12:30</span>\n\n      <h3 class=\"timeline-header\">点击股票管理按钮</h3>\n\n      <!-- <div class=\"timeline-body\">\n        \n      </div> -->\n\n      <!-- <div class=\"timeline-footer\">\n        <a class=\"btn btn-primary btn-xs\">详情</a>\n      </div> -->\n    </div>\n  </li>\n  <li>\n    <!-- timeline icon -->\n    <i class=\"fa fa-user bg-aqua\"></i>\n    <div class=\"timeline-item\">\n      <span class=\"time\"><i class=\"fa fa-clock-o\"></i> 12:40</span>\n\n      <h3 class=\"timeline-header\"><a href=\"https://github.com/dravenxiaokai\">draven_xiaokai</a> 教你如何使用本系统</h3>\n\n      <div class=\"timeline-body\">\n        <ol>\n          <li><label class=\"label-info\"> 点击创建按钮添加股票信息 </label></li>\n          <li><label class=\"label-warning\"> 点击创修改钮修改股票信息 </label></li>\n          <li><label class=\"label-primary\"> 点击删除按钮删除股票信息 </label></li>\n          <li><label class=\"label-danger\"> 输入股票名称搜索股票信息 </label></li>\n        </ol>\n      </div>\n\n      <div class=\"timeline-footer\">\n        <a class=\"btn btn-warning btn-xs\">详情</a>\n      </div>\n    </div>\n  </li>\n  <!-- END timeline item -->\n</ul>"
 
 /***/ }),
 
@@ -323,7 +323,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<footer class=\"main-footer\">\n  <!-- To the right -->\n  <div class=\"pull-right hidden-xs\">\n    Anything you want\n  </div>\n  <!-- Default to the left -->\n  <strong>Copyright &copy; 2017 <a href=\"#\">draven_xiaokai</a>.</strong> All rights reserved.\n</footer>"
+module.exports = "<footer class=\"main-footer\">\n  <!-- To the right -->\n  <div class=\"pull-right hidden-xs\">\n    <a href=\"https://github.com/dravenxiaokai\">draven_xiaokai</a>\n  </div>\n  <!-- Default to the left -->\n  <strong>Copyright &copy;2017 <a href=\"https://github.com/dravenxiaokai\">draven_xiaokai</a>.</strong> All rights reserved.\n</footer>"
 
 /***/ }),
 
@@ -873,7 +873,7 @@ var StockFormComponent = (function () {
         this.formModel.value.categories = chineseCategories;
         this.formModel.value.rating = this.stock.rating;
         console.log(this.formModel.value);
-        // this.router.navigateByUrl('/stock')
+        this.router.navigateByUrl('/stock');
     };
     return StockFormComponent;
 }());
