@@ -1,5 +1,6 @@
 import * as express from 'express'
 import * as path from 'path'
+import * as bodyParser from 'body-parser'
 import { Server } from 'ws'
 
 const app = express()
@@ -7,6 +8,8 @@ const nodeport = 3003
 
 
 app.use('/', express.static(path.join(__dirname, '..', 'client')))
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
 
 app.get('/api/stock', (req, res) => {
     let result = stocks
@@ -21,8 +24,37 @@ app.get('/api/stock/:id', (req, res) => {
     res.json(stocks.find(stock => stock.id == req.params.id))
 })
 
+app.post('/api/savestock', (req, res) => {
+    let stock = req.body
+    // console.log(stock)
+    if (stock.id == 0) {
+        stock.id = stocks.length + 1
+        stocks.push(stock)
+        res.json({ create: "success" })
+    } else {
+        for (let i in stocks) {
+            if (stocks[i].id == stock.id) {
+                stocks[i] = stock
+            }
+        }
+        res.json({save:"success"})
+    }
+})
+
+app.get('/api/deleteStock/:id',(req,res)=>{
+    for(let i in stocks){
+        if(stocks[i].id == req.params.id){
+            stocks.splice(parseInt(i),1)
+        }
+    }
+    for(let i in stocks){
+        stocks[i].id = parseInt(i)+1
+    }
+    res.json({delete:"success"})
+})
+
 const server = app.listen(nodeport, 'localhost', () => {
-    console.log('started on port: '+nodeport)
+    console.log('started on port: ' + nodeport)
 })
 
 var subscriptions = new Set<any>()

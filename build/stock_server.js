@@ -2,10 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var path = require("path");
+var bodyParser = require("body-parser");
 var ws_1 = require("ws");
 var app = express();
 var nodeport = 3003;
 app.use('/', express.static(path.join(__dirname, '..', 'client')));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.get('/api/stock', function (req, res) {
     var result = stocks;
     var params = req.query;
@@ -16,6 +19,34 @@ app.get('/api/stock', function (req, res) {
 });
 app.get('/api/stock/:id', function (req, res) {
     res.json(stocks.find(function (stock) { return stock.id == req.params.id; }));
+});
+app.post('/api/savestock', function (req, res) {
+    var stock = req.body;
+    // console.log(stock)
+    if (stock.id == 0) {
+        stock.id = stocks.length + 1;
+        stocks.push(stock);
+        res.json({ create: "success" });
+    }
+    else {
+        for (var i in stocks) {
+            if (stocks[i].id == stock.id) {
+                stocks[i] = stock;
+            }
+        }
+        res.json({ save: "success" });
+    }
+});
+app.get('/api/deleteStock/:id', function (req, res) {
+    for (var i in stocks) {
+        if (stocks[i].id == req.params.id) {
+            stocks.splice(parseInt(i), 1);
+        }
+    }
+    for (var i in stocks) {
+        stocks[i].id = parseInt(i) + 1;
+    }
+    res.json({ delete: "success" });
 });
 var server = app.listen(nodeport, 'localhost', function () {
     console.log('started on port: ' + nodeport);

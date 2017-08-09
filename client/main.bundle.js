@@ -783,7 +783,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/stock/stock-form/stock-form.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Horizontal Form -->\r\n<div class=\"box box-info\">\r\n    <div class=\"box-header with-border\">\r\n        <h3 class=\"box-title\">股票信息</h3>\r\n    </div>\r\n    <!-- /.box-header -->\r\n    <!-- form start -->\r\n    <form [formGroup]=\"formModel\" class=\"form-horizontal\">\r\n        <div class=\"box-body\">\r\n            <div class=\"form-group\" [class.has-error]=\"formModel.get('name').touched && (formModel.hasError('minlength','name') || formModel.hasError('required','name'))\">\r\n                <label for=\"name\" class=\"col-sm-2 control-label\">股票名称</label>\r\n\r\n                <div class=\"col-sm-8\">\r\n                    <input formControlName=\"name\" type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"股票名称\">\r\n                </div>\r\n                <span class=\"help-block\" [class.hidden]=\"formModel.get('name').untouched || !formModel.hasError('required','name')\">股票名称是必填项</span>\r\n                <span class=\"help-block\" [class.hidden]=\"formModel.get('name').untouched || !formModel.hasError('minlength','name')\">请至少输入3个字</span>\r\n            </div>\r\n            <div class=\"form-group\" [class.has-error]=\"formModel.hasError('required','price')\">\r\n                <label for=\"price\" class=\"col-sm-2 control-label\">股票价格</label>\r\n\r\n                <div class=\"col-sm-6\">\r\n                    <input formControlName=\"price\" type=\"number\" class=\"form-control\" id=\"price\" placeholder=\"股票价格\">\r\n                </div>\r\n                <span class=\"help-block\" [class.hidden]=\"!formModel.hasError('required','price')\">股票价格是必填项</span>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-sm-2 control-label\">股票星级</label>\r\n\r\n                <div class=\"col-sm-10\">\r\n                    <app-stars [(rating)]=\"stock.rating\" [readonly]=\"false\"></app-stars>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"desc\" class=\"col-sm-2 control-label\">股票描述</label>\r\n\r\n                <div class=\"col-sm-10\">\r\n                    <textarea formControlName=\"desc\" class=\"form-control\" id=\"desc\" rows=\"5\">{{stock.desc}}</textarea>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\" [class.has-error]=\"formModel.hasError('categoriesLength','categories')\">\r\n                <label class=\"col-sm-2 control-label\">股票类型</label>\r\n                <div class=\"col-sm-offset-2 col-sm-10\">\r\n                    <div class=\"row\" formArrayName=\"categories\">\r\n                        <div *ngFor=\"let category of categories;let i = index;\" class=\"col-sm-2\">\r\n                            <div class=\"checkbox\">\r\n                                <label>\r\n                                    <input [formControlName]=\"i\" type=\"checkbox\"> {{category}}\r\n                                </label>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <span class=\"help-block\" [class.hidden]=\"!formModel.hasError('categoriesLength','categories')\">请至少选择一个类型</span>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <!-- /.box-body -->\r\n        <div class=\"box-footer\">\r\n            <button (click)=\"cancel()\" type=\"button\" class=\"btn btn-default\">取消</button>\r\n            <button (click)=\"save()\" [disabled]=\"formModel.invalid\" type=\"submit\" class=\"btn btn-info pull-right\">保存</button>\r\n        </div>\r\n        <!-- /.box-footer -->\r\n    </form>\r\n</div>\r\n<!-- /.box -->"
+module.exports = "<!-- Horizontal Form -->\r\n<div class=\"box box-info\">\r\n    <div class=\"box-header with-border\">\r\n        <h3 class=\"box-title\">股票信息</h3>\r\n    </div>\r\n    <!-- /.box-header -->\r\n    <!-- form start -->\r\n    <form [formGroup]=\"formModel\" class=\"form-horizontal\">\r\n        <div class=\"box-body\">\r\n            <div class=\"form-group\" [class.has-error]=\"formModel.get('name').touched && (formModel.hasError('minlength','name') || formModel.hasError('required','name'))\">\r\n                <label for=\"name\" class=\"col-sm-2 control-label\">股票名称</label>\r\n\r\n                <div class=\"col-sm-8\">\r\n                    <input formControlName=\"name\" type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"股票名称\">\r\n                </div>\r\n                <span class=\"help-block\" [class.hidden]=\"formModel.get('name').untouched || !formModel.hasError('required','name')\">股票名称是必填项</span>\r\n                <span class=\"help-block\" [class.hidden]=\"formModel.get('name').untouched || !formModel.hasError('minlength','name')\">请至少输入3个字</span>\r\n            </div>\r\n            <div class=\"form-group\" [class.has-error]=\"formModel.get('price').touched && formModel.hasError('required','price')\">\r\n                <label for=\"price\" class=\"col-sm-2 control-label\">股票价格</label>\r\n\r\n                <div class=\"col-sm-6\">\r\n                    <input formControlName=\"price\" type=\"number\" class=\"form-control\" id=\"price\" placeholder=\"股票价格\">\r\n                </div>\r\n                <span class=\"help-block\" [class.hidden]=\"formModel.get('price').untouched || !formModel.hasError('required','price')\">股票价格是必填项</span>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-sm-2 control-label\">股票星级</label>\r\n\r\n                <div class=\"col-sm-10\">\r\n                    <app-stars [(rating)]=\"stock.rating\" [readonly]=\"false\"></app-stars>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"desc\" class=\"col-sm-2 control-label\">股票描述</label>\r\n\r\n                <div class=\"col-sm-10\">\r\n                    <textarea formControlName=\"desc\" class=\"form-control\" id=\"desc\" rows=\"5\">{{stock.desc}}</textarea>\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\" [class.has-error]=\"formModel.get('categories').touched && formModel.hasError('categoriesLength','categories')\">\r\n                <label class=\"col-sm-2 control-label\">股票类型</label>\r\n                <div class=\"col-sm-offset-2 col-sm-10\">\r\n                    <div class=\"row\" formArrayName=\"categories\">\r\n                        <div *ngFor=\"let category of categories;let i = index;\" class=\"col-sm-2\">\r\n                            <div class=\"checkbox\">\r\n                                <label>\r\n                                    <input [formControlName]=\"i\" type=\"checkbox\"> {{category}}\r\n                                </label>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                    <span class=\"help-block\" [class.hidden]=\"formModel.get('categories').untouched || !formModel.hasError('categoriesLength','categories')\">请至少选择一个类型</span>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <!-- /.box-body -->\r\n        <div class=\"box-footer\">\r\n            <button (click)=\"cancel()\" type=\"button\" type=\"submit\" class=\"btn btn-default\">取消</button>\r\n            <button (click)=\"save()\" [disabled]=\"formModel.invalid\" type=\"submit\" class=\"btn btn-info pull-right\">保存</button>\r\n        </div>\r\n        <!-- /.box-footer -->\r\n    </form>\r\n</div>\r\n<!-- /.box -->"
 
 /***/ }),
 
@@ -865,6 +865,7 @@ var StockFormComponent = (function () {
         this.router.navigateByUrl('/stock');
     };
     StockFormComponent.prototype.save = function () {
+        var _this = this;
         var chineseCategories = [];
         var index = 0;
         for (var i = 0; i < 3; i++) {
@@ -874,8 +875,12 @@ var StockFormComponent = (function () {
         }
         this.formModel.value.categories = chineseCategories;
         this.formModel.value.rating = this.stock.rating;
-        // console.log(this.formModel.value)
-        this.router.navigateByUrl('/stock');
+        console.log(this.formModel.value);
+        var stock = new __WEBPACK_IMPORTED_MODULE_1__stock_service__["b" /* Stock */](this.routeInfo.snapshot.params['id'], this.formModel.value.name, this.formModel.value.price, this.formModel.value.rating, this.formModel.value.desc, this.formModel.value.categories);
+        // console.log(stock)
+        this.stockService.saveStock(stock).subscribe(function (data) {
+            _this.router.navigateByUrl('/stock');
+        });
     };
     return StockFormComponent;
 }());
@@ -962,6 +967,12 @@ var StockManageComponent = (function () {
     StockManageComponent.prototype.update = function (stock) {
         this.router.navigateByUrl('/stock/' + stock.id);
     };
+    StockManageComponent.prototype.deleteStock = function (stock) {
+        var _this = this;
+        this.stockService.deleteStock(stock.id).subscribe(function (data) {
+            _this.ngOnInit();
+        });
+    };
     return StockManageComponent;
 }());
 StockManageComponent = __decorate([
@@ -1020,6 +1031,12 @@ var StockService = (function () {
         //     stock = new Stock(0, '', 0, 0, '', [])
         //   }
         //   return stock;
+    };
+    StockService.prototype.saveStock = function (data) {
+        return this.http.post('/api/savestock', data).map(function (res) { return res.json(); });
+    };
+    StockService.prototype.deleteStock = function (id) {
+        return this.http.get('/api/deleteStock/' + id).map(function (res) { return res.json(); });
     };
     return StockService;
 }());
