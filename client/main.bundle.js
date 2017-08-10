@@ -419,7 +419,7 @@ var HeaderComponent = (function () {
     }
     HeaderComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.socketService.createObservableSocket('ws://localhost:8085')
+        this.socketService.createObservableSocket('ws://stock.draven.ren:8085')
             .map(function (event) { return JSON.parse(event); })
             .subscribe(function (event) { return _this.messageCount = event.messageCount; });
     };
