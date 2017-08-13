@@ -19,8 +19,8 @@
 4. `/api/deleteStock/:id`删除股票信息
 
 ## 技术栈
-### 1. 本项目完全前后端分离，使用Angular CLI构建前台架构，前端由哈希路由控制，后端接受express的路由请求获取api数据
-### 2. 启用websocket服务，从后台向前台推送数据
-### 3. mongoose映射mongodb数据库
+#### 1. 本项目完全前后端分离，使用Angular CLI构建前台架构，前端由哈希路由控制，后端接受express的路由请求获取api数据
+#### 2. 启用websocket服务，从后台向前台推送数据
+#### 3. mongoose映射mongodb数据库
 
 [我的微博](http://weibo.com/u/3826537889?refer_flag=1001030201_&is_all=1)
